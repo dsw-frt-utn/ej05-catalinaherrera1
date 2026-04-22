@@ -26,8 +26,23 @@ public class VehiculoCombustible: Vehiculo
         return litrosExtra;
     }
 
+    public int CalcularEdad()
+    {
+        int edad = 2026 - GetAnio();
+        return edad;
+    }
+
     public override double CalcularConsumo(double kilometros)
     {
-        return kilometros * kilometrosPorLitro;
+        double litrosTotales;
+        if(CalcularEdad() > 5){
+            double litrosViejo = litrosExtra * (kilometros / 15);
+            litrosTotales = litrosViejo + (kilometros / kilometrosPorLitro);
+            
+        } else { 
+            litrosTotales = kilometros / kilometrosPorLitro; 
+        }
+
+        return Math.Round(litrosTotales,2);
     }
 }
