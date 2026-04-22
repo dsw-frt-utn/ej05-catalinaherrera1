@@ -23,12 +23,10 @@ public class Controlador
         {
             double consumo = 0;
             Vehiculo? vehiculo = Persistencia.GetVehiculo(entry.Key);
-            if (vehiculo != null)
-            {
-                consumo = vehiculo.CalcularConsumo(entry.Value);
+           
                 consumoElectricos += vehiculo.EsDe(VehiculoTipo.Electrico) ? consumo : 0;
                 consumoCombustible += vehiculo.EsDe(VehiculoTipo.Combustible) ? consumo : 0;
-            }
+            
         }
         return (consumoElectricos, consumoCombustible);
     }
